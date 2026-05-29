@@ -1,0 +1,23 @@
+# .NET
+**/bin/
+**/obj/
+**/appsettings.*.json
+!**/appsettings.json
+**/secrets.json
+
+# Environment files
+**/.env
+**/.env.*
+
+# Node
+**/node_modules/
+**/dist/
+
+# Uploads
+backend/JobMailApi/Uploads/
+
+# Logs
+**/*.log
+
+# OS
+.DS_Store
