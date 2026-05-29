@@ -31,6 +31,11 @@ GROQ__APIKEY=gsk_...
 ENCRYPTION__KEY=...
 ```
 
+## Example Env Files
+
+- Backend: `backend/JobMailApi/.env.example`
+- Frontend: `frontend/jobmail-ui/.env.example`
+
 ---
 
 ## Gmail App Password — How It Works
