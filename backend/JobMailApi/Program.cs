@@ -71,6 +71,26 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+var connectionString = app.Configuration.GetConnectionString("Postgres");
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    app.Logger.LogWarning("Postgres connection string is empty. Skipping migrations.");
+}
+else
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        app.Logger.LogError(ex, "Database migration failed.");
+        throw;
+    }
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
