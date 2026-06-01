@@ -39,7 +39,10 @@ builder.Services.AddCors(options =>
     {
         policy.SetIsOriginAllowed(origin =>
             Uri.TryCreate(origin, UriKind.Absolute, out var uri)
-            && (uri.Host == "localhost" || uri.Host == "127.0.0.1"))
+            && (uri.Host == "localhost"
+                || uri.Host == "127.0.0.1"
+                || uri.Host == "job-mailer-kgx7.vercel.app"
+                || uri.Host.EndsWith(".vercel.app", StringComparison.OrdinalIgnoreCase)))
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
